@@ -4,10 +4,6 @@ import Display from "./components/Display";
 import { evaluate } from "mathjs";
 import "./App.css";
 
-/* TO DO:
-  - Maximum digit handling 
-*/
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,20 +20,6 @@ class App extends React.Component {
       result: "",
     });
   };
-
-  // exceededMaxDigit = (prevInput) => {
-  //   console.log(this.state.input.length);
-  //   this.setState({
-  //     input: "Digit limit met",
-  //   });
-  //   setTimeout(
-  //     () =>
-  //       this.setState({
-  //         input: prevInput,
-  //       }),
-  //     1000
-  //   );
-  // };
 
   addInput = (value) => {
     if (this.state.input !== "0") {
@@ -122,17 +104,6 @@ class App extends React.Component {
     }
   };
 
-  limitDecimalsPlace = (result) => {
-    let [integer, decimal] = result;
-    if (decimal !== undefined) {
-      if (decimal.length > 7) {
-        decimal = decimal.slice(0, 7);
-      }
-      return `${integer}.${decimal}`;
-    }
-    return integer;
-  };
-
   calculate = (expression) => {
     if (expression === "") return;
 
@@ -140,8 +111,7 @@ class App extends React.Component {
     // limit decimals place to a maximum of 7
     let formattedExpression = expression.replaceAll("⋅", "*");
     formattedExpression = this.endsWithOperator(formattedExpression);
-    let resultArr = evaluate(formattedExpression).toString().split(".");
-    let result = this.limitDecimalsPlace(resultArr);
+    let result = evaluate(formattedExpression);
 
     this.setState({
       input: "",
