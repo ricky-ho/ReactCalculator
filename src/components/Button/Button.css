@@ -1,0 +1,36 @@
+.btn {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  margin: 1px;
+  color: #ffffff;
+  border: 1px solid #000000;
+  background: #a8a8a8;
+}
+
+.btn:hover {
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  color: #000000;
+}
+
+.btn-clear {
+  flex: 2;
+  padding-left: 4px;
+  background: #910f0f;
+}
+
+.btn-equals {
+  background: #2866da;
+}
+
+.btn-zero {
+  flex: 2;
+  padding-left: 4px;
+}
+
+.btn-operator {
+  background: #da8e02;
+}
